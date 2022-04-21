@@ -9,12 +9,10 @@ const todos: TodoType[] = [
     {id:3,text:"코딩하기" ,color: "yellow", checked:false},
     {id:4,text:"넥스트 공부하기" ,color: "green", checked:false},
     {id:5,text:"요리 연습하기" ,color: "blue", checked:false},
-    {id:6,text:"분리수거 하기" ,color: "navy", checked:false}
+    {id:6,text:"분리수거 하기" ,color: "navy", checked:true}
 ]
 
-const Container = styled.div`
-padding:20px;
-`
+
 
 const index :NextPage = () => {
     

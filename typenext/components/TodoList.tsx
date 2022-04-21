@@ -2,7 +2,8 @@ import React,{useMemo,useCallback} from 'react';
 import styled from 'styled-components';
 import palette from '../styles/palette';
 import { TodoType } from '../types/todo';
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import CheckIcon from '@mui/icons-material/Check';
 interface IProps {
     todos:TodoType[]
 }
@@ -201,22 +202,21 @@ const TodoList:React.FC<IProps> = ({todos}) => {
     return (
         <Container>
         <div className="todo-list-header">
-            <p className="todo-list-last-todo">
+          <p className="todo-list-last-todo">
             남은TODO<span>{todos.length}개</span>
-            </p>
-        <div className="todo-list-header-colors">
-          {Object.keys(todoColorNums).map((color, index) => (//키를 classname 에 적용
-            <div className="todo-list-header-color-num" key={index}>
-            <div className={`todo-list-header-round-color bg-${color}`} />
-            <p>{todoColorNums[color]}개</p>
-            </div>
-          ))}
+          </p>
+          <div className="todo-list-header-colors">
+            {Object.keys(todoColorNums).map((color, index) => (
+              <div className="todo-list-header-color-num" key={index}>
+                <div className={`todo-list-header-round-color bg-${color}`} />
+                <p>{todoColorNums[color]}개</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-      <ul className='todo-list'>
-          {todos.map((todo)=>{
-                 
-      return <li className="todo-item" key={todo.id}>
+        <ul className="todo-list">
+          {todos.map((todo) => (
+            <li className="todo-item" key={todo.id}>
               <div className="todo-left-side">
                 <div className={`todo-color-block bg-${todo.color}`} />
                 <p
@@ -227,10 +227,33 @@ const TodoList:React.FC<IProps> = ({todos}) => {
                   {todo.text}
                 </p>
               </div>
-              </li>
-          })}
-      </ul>
-        </Container>
+              <div className="todo-right-side">
+                {todo.checked && (
+                  <>
+                    <DeleteIcon
+                    onClick={()=>{}}
+                      className="todo-trash-can"
+                     
+                    />
+                    <CheckIcon
+                        onClick={()=>{}}
+                      className="todo-check-mark"
+                    
+                    />
+                  </>
+                )}
+                {!todo.checked && (
+                  <button
+                    type="button"
+                    className="todo-button"
+                 
+                  />
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </Container>
     );
 };
 
